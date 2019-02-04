@@ -1,5 +1,5 @@
 {
-  "name": "webpack1",
+  "name": "webpack-react-boilerplates",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,10 +7,20 @@
     "build": "webpack --mode production --config config/webpack.prod.config.js",
     "start": "webpack-dev-server --mode development --open --config config/webpack.dev.config.js"
   },
-  "keywords": [],
+  "keywords": [
+    "webpack",
+    "babel",
+    "typescript",
+    "react",
+    "redux",
+    "mobx",
+    "jest"
+  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/react": "^16.8.1",
+    "@types/react-dom": "^16.0.11",
     "clean-webpack-plugin": "^1.0.1",
     "css-loader": "^2.1.0",
     "file-loader": "^3.0.1",
@@ -21,9 +31,15 @@
     "style-loader": "^0.23.1",
     "stylelint": "^9.10.1",
     "stylelint-config-standard": "^18.2.0",
+    "ts-loader": "^5.3.3",
+    "typescript": "^3.3.1",
     "webpack": "^4.29.0",
     "webpack-cli": "^3.2.1",
     "webpack-dev-server": "^3.1.14",
     "webpack-merge": "^4.2.1"
+  },
+  "dependencies": {
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
   }
 }
