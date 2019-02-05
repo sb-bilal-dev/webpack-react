@@ -1,11 +1,20 @@
-import './index.css'
-import './print.js'
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-if (module.hot) {
-  module.hot.accept('./print.js', () => {
-    console.log('print.js updated..');
-  })
+import Root from './Root'
+import './index.css'
+
+const render = (Root) => {
+  ReactDOM.render(
+    <Root />,
+    document.getElementById('root')
+  )
 }
 
-console.log('webpack101')
-
+render(Root)
+if (module.hot) {
+  module.hot.accept('./Root', () => {
+    const NewRoot = require('./Root').default
+    render(NewRoot)
+  })
+}
