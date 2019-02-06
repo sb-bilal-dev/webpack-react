@@ -6,6 +6,6 @@
   "plugins": [
     "@babel/plugin-transform-react-jsx-source",
     "@babel/plugin-proposal-class-properties",
-    "@babel/transform-runtime"
+    "@babel/plugin-transform-runtime"
   ]
 }
