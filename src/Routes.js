@@ -1,7 +1,7 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 
-import App from './containers/App'
+import Todo from './containers/Todo'
 import NotFound from './components/NotFound'
 
 const Routes = () => {
@@ -10,7 +10,7 @@ const Routes = () => {
       <Route
         exact
         path='/'
-        component={App}
+        component={Todo}
       />
       <Route component={NotFound} />
     </Switch>
