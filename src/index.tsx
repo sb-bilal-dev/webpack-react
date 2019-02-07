@@ -1,23 +1,21 @@
 import * as React from 'react'
 import * as ReactDom from 'react-dom'
 
-import App from './App'
+import Root from './Root'
 import './index.css'
-import './print'
 
-ReactDom.render(
-  <App 
-    compiler='tsts' 
-    framework
-  />,
-  document.getElementById('root')
-)
-
-if (module.hot) {
-  module.hot.accept('./print', () => {
-    console.log('print updated..');
-  })
+const render = (Root: React.ComponentClass) => {
+  ReactDom.render(
+    <Root />,
+    document.getElementById('root')
+  )
 }
 
-console.log('webpack101')
+render(Root)
+if (module.hot) {
+  module.hot.accept('./Root', () => {
+    const NewRoot = require('./Root').default
 
+    render(NewRoot)
+  })
+}
