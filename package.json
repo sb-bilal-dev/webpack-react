@@ -24,6 +24,8 @@
     "@types/react-redux": "^7.0.1",
     "@types/react-router-dom": "^4.3.1",
     "@types/react-router-redux": "^5.0.17",
+    "@types/redux-logger": "^3.0.6",
+    "@types/redux-thunk": "^2.1.0",
     "@types/reselect": "^2.2.0",
     "clean-webpack-plugin": "^1.0.1",
     "css-loader": "^2.1.0",
@@ -44,13 +46,16 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "connected-react-router": "^6.2.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-redux": "^6.0.0",
     "react-router-dom": "^4.3.1",
     "react-router-redux": "^4.0.8",
     "redux": "^4.0.1",
-    "redux-saga": "^1.0.1",
-    "reselect": "^4.0.0"
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
+    "reselect": "^4.0.0",
+    "typesafe-actions": "^3.0.0"
   }
 }

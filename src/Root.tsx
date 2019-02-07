@@ -1,19 +1,20 @@
 import * as React from 'react'
+import { ConnectedRouter } from 'connected-react-router'
 import { Provider } from 'react-redux'
-import { configureStore } from './store'
 
-import * as Icon from './images/Icon.png'
+import configureStore, { history } from './store'
+import Routes from './Routes'
 
 const store = configureStore()
 
-export class Root extends React.Component {
-  render() {
-    return(
+export default class Root extends React.Component {
+  render () {
+    return (
       <Provider store={store}>
-        <div>Root</div>
+        <ConnectedRouter history={history}>
+          <Routes />
+        </ConnectedRouter>
       </Provider>
     )
   }
 }
-
-export default Root
