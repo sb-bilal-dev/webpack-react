@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import { inject, observer } from 'mobx-react'
 
-@inject('todo')
-@observer
+import Profile from './Profile'
+
 class Todo extends Component {
   state = {
-    value: ''
+    value: '',
+    todos: []
   }
 
   handleChange = event => {
@@ -14,8 +14,12 @@ class Todo extends Component {
 
   handleSubmit = event => {
     event.preventDefault()
-    this.props.todo.addTodo(this.state.value)
-    this.setState({ value: '' })
+    if (this.state.value.trim().length) {
+      this.setState({
+        value: '',
+        todos: [...this.state.todos, this.state.value]
+      })
+    }
   }
 
   render () {
@@ -29,10 +33,9 @@ class Todo extends Component {
           />
         </form>
         <ul>
-          {this.props.todo.todos.map(todo => (
-            <li>{todo}</li>
-          ))}
+          {this.state.todos.map(todo => <li>{todo}</li>)}
         </ul>
+        <Profile />
       </div>
     )
   }
