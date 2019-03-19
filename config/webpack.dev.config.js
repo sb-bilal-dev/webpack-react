@@ -10,7 +10,7 @@ const PORT = process.env.PORT || '9000';
 module.exports = merge(config, {
   output: {
     path: path.resolve(__dirname, '../dist'),
-    filename: 'main.js',
+    filename: '[name].[contenthash].js',
   },
   devtool: 'inline-source-map',
   devServer: {
