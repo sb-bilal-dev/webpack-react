@@ -9,6 +9,6 @@ module.exports = merge(config, {
   },
   output: {
     path: path.resolve(__dirname, '../build'),
-    filename: 'main.js',
+    filename: '[name].[contenthash].js',
   }
 });
