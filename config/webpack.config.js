@@ -24,7 +24,7 @@ module.exports = {
           'style-loader',
           { 
             loader: 'css-loader', 
-            options: { modules: true, importLoaders: 1 }
+            options: { importLoaders: 1 }
           },
           {
             loader: 'postcss-loader',
