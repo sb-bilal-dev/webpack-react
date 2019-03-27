@@ -1,0 +1,11 @@
+
+.SearchInput {
+  padding: 7px;
+  border: none;
+  border-bottom: 1px solid #999;
+}
+
+.SearchInput:focus {
+  outline: none;
+  border-bottom: 1px solid #555;
+}

@@ -1,0 +1,24 @@
+
+.GridView {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.GridView .GridView__item {
+  box-shadow: 0 1px 2px 1px rgba(1, 1, 1, 0.2);
+}
+
+.GridView .GridView__item__image {
+  width: 100%;
+  object-fit: contain;
+}
+
+.GridView .GridView__item__info {
+  padding: 7px 20px;
+}
+
+.GridView .GridView__item__info h4,
+.GridView .GridView__item__info p {
+  padding: 3px 0;
+}
