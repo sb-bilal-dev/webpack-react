@@ -1,0 +1,27 @@
+
+.ListView {
+  display: grid;
+  grid-gap: 10px;
+  grid-auto-flow: row;
+  grid-template-columns: 1fr;
+}
+
+.ListView .ListView__item {
+  box-shadow: 0 1px 2px 1px rgba(1, 1, 1, 0.2);
+}
+
+.ListView .ListView__item__image {
+  float: left;
+  height: 80px;
+  width: 80px;
+  object-fit: contain;
+}
+
+.ListView .ListView__item__info {
+  padding: 7px 20px;
+}
+
+.ListView .ListView__item__info h4,
+.ListView .ListView__item__info p {
+  padding: 3px 0;
+}
