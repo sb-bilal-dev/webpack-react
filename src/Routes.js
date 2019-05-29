@@ -1,20 +1,16 @@
-import React from 'react'
-import { Switch, Route } from 'react-router-dom'
+import React from "react";
+import { Switch, Route } from "react-router-dom";
 
-import App from './containers/App'
-import NotFound from './components/NotFound'
+import App from "./containers/App";
+import NotFound from "./components/NotFound";
 
 const Routes = () => {
   return (
     <Switch>
-      <Route
-        exact
-        path='/'
-        component={App}
-      />
+      <Route exact path="/" component={App} />
       <Route component={NotFound} />
     </Switch>
-  )
-}
+  );
+};
 
-export default Routes
+export default Routes;

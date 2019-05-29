@@ -1,14 +1,14 @@
-import React from 'react'
-import { BrowserRouter as Router } from 'react-router-dom'
+import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
 
-import Routes from './Routes'
+import Routes from "./Routes";
 
 export default class Root extends React.Component {
-  render () {
+  render() {
     return (
       <Router>
         <Routes />
       </Router>
-    )
+    );
   }
 }
