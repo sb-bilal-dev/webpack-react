@@ -1,4 +1,4 @@
 body {
-  background: url('./images/Icon.png');
+  background: url("./images/Icon.png");
   display: flex;
 }

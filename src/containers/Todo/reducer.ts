@@ -1,25 +1,22 @@
-import { Action } from 'redux'
-import * as todoActions from './actions'
+import * as todoActions from "./actions";
 
 export interface TodoStore {
-  todos: string[]
+  todos: string[];
 }
 
 const initialState: TodoStore = {
-  todos: [
-    'add redux'
-  ]
-}
+  todos: ["add redux"]
+};
 
-const todoReducer = (state = initialState, action: Action) => {
+const todoReducer = (state = initialState, action: any) => {
   switch (action.type) {
     case todoActions.ADD_TODO:
       return {
-        todos: [action.payload, ...state.todos]
-      }
+        todos: [action.todos, ...state.todos]
+      };
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default todoReducer
+export default todoReducer;

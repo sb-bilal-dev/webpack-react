@@ -1,20 +1,19 @@
-const path = require('path');
-const webpack = require('webpack');
-const merge = require('webpack-merge');
-const config = require('./webpack.config.js');
+const path = require("path");
+const webpack = require("webpack");
+const merge = require("webpack-merge");
+const config = require("./webpack.config.js");
 
-
-const HOST = process.env.HOST || '127.0.0.1';
-const PORT = process.env.PORT || '9000';
+const HOST = process.env.HOST || "127.0.0.1";
+const PORT = process.env.PORT || "9000";
 
 module.exports = merge(config, {
   output: {
-    path: path.resolve(__dirname, '../dist'),
-    filename: '[name].[contenthash].js',
+    path: path.resolve(__dirname, "../dist"),
+    filename: "[name].[hash].js"
   },
-  devtool: 'inline-source-map',
+  devtool: "inline-source-map",
   devServer: {
-    contentBase: '../dist',
+    contentBase: "../dist",
     host: HOST,
     port: PORT,
     compress: true,
@@ -22,9 +21,7 @@ module.exports = merge(config, {
     historyApiFallback: true,
     hot: true,
     overlay: true,
-    open: true,
+    open: true
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin()
-  ]
+  plugins: [new webpack.HotModuleReplacementPlugin()]
 });

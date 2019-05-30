@@ -1,56 +1,58 @@
-import * as React from 'react'
-import { Dispatch } from 'redux'
-import { connect } from 'react-redux'
-import * as todoActions from './actions'
-import { TodoStore } from './reducer'
+import * as React from "react";
+import { connect } from "react-redux";
+import * as todoActions from "./actions";
+import { TodoStore } from "./reducer";
 
 type TodoProps = {
-  dispatch: Dispatch
-  todo: TodoStore
-}
+  dispatch: any;
+  todo: TodoStore;
+};
 
 type TodoState = {
-  value: string
-}
+  value: string;
+};
 
 class Todo extends React.Component<TodoProps, TodoState> {
   state = {
-    value: ''
+    value: ""
+  };
+
+  componentDidMount() {
+    this.props.dispatch(todoActions.getTodos());
   }
 
-  componentDidMount () {
-    this.props.dispatch(todoActions.getTodos())
-  }
-
-  handleChange = (e: React.ChangeEvent<HTMLInputElement>) => this.setState({ value: e.target.value })
+  handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+    this.setState({ value: e.target.value });
 
   handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    this.props.dispatch(todoActions.addTodo(this.state.value))
-    this.setState({ value: '' })
-  }
+    e.preventDefault();
+    this.props.dispatch(todoActions.addTodo(this.state.value));
+    this.setState({ value: "" });
+  };
 
-  render () {
-    const { value } = this.state
+  render() {
+    const { value } = this.state;
     const {
       todo: { todos }
-    } = this.props
+    } = this.props;
 
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
           <input
-            placeholder='Add todo...'
+            placeholder="Add todo..."
             onChange={this.handleChange}
             value={value}
           />
         </form>
         <ul>
-          {todos.map((todo: string) => (<li>{todo}</li>))}
+          {todos.map((todo: string) => (
+            <li>{todo}</li>
+          ))}
         </ul>
       </div>
-    )
+    );
   }
 }
 
-export default connect(state => state)(Todo)
+export default connect(state => state)(Todo);

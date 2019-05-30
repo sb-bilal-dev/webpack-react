@@ -1,10 +1,10 @@
-import axios from 'axios'
+import axios from "axios";
 
 export default (options: object = {}) => {
   const defaultOptions = {
-    baseURL: 'https://jsonplaceholder.typicode.com/',
+    baseURL: "https://jsonplaceholder.typicode.com/",
     ...options
-  }
+  };
 
-  return axios.create(defaultOptions)
-}
+  return axios.create(defaultOptions);
+};
