@@ -1,5 +1,8 @@
 import * as React from "react";
 import { connect } from "react-redux";
+import { TextField } from "@material-ui/core";
+import Button from "@material-ui/core/Button";
+
 import * as todoActions from "./actions";
 import { TodoStore } from "./reducer";
 
@@ -39,11 +42,15 @@ class Todo extends React.Component<TodoProps, TodoState> {
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <input
+          fdasfsda
+          <Button variant="contained" color="primary">
+            Hello World
+          </Button>
+          {/* <TextField
             placeholder="Add todo..."
             onChange={this.handleChange}
             value={value}
-          />
+          /> */}
         </form>
         <ul>
           {todos.map((todo: string) => (
