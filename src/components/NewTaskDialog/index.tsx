@@ -4,14 +4,21 @@ import {
   Dialog,
   DialogTitle,
   Select,
-  MenuItem
+  MenuItem,
+  DialogContent,
+  DialogActions,
+  Button
 } from "@material-ui/core";
-import { TaskModel, ProjectModel } from "../../containers/Task/reducer";
+import * as moment from "moment";
+import { ProjectModel, TaskModel } from "../../containers/Task/reducer";
+import * as taskActions from "../../containers/Task/actions";
+import genId from "../../utils/genId";
 
 export interface NewTaskDialogProps {
   open: boolean;
   onClose: () => void;
   projects: ProjectModel[];
+  addTask: (task: TaskModel) => void;
 }
 
 export interface NewTaskDialogState {
@@ -49,55 +56,79 @@ class NewTaskDialog extends React.PureComponent<
     } as any);
   };
 
+  handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+    const newTask = {
+      ...this.state,
+      date: moment()
+        .utc()
+        .format("YYYY-MM-DD hh:mm:ss"),
+      id: genId()
+    };
+    this.props.addTask(newTask);
+  };
+
   render() {
     const { open, onClose, projects } = this.props;
     const { title, body, project, urgency } = this.state;
     return (
       <Dialog open={open} onClose={onClose}>
-        <DialogTitle>Create New Task</DialogTitle>
         <form>
-          <TextField
-            fullWidth
-            value={title}
-            name="title"
-            onChange={this.onTextFieldChange}
-          />
-          <TextField
-            fullWidth
-            multiline
-            value={body}
-            name="body"
-            onChange={this.onTextFieldChange}
-          />
-          <Select
-            fullWidth
-            value={project}
-            onChange={this.onTextFieldChange}
-            inputProps={{
-              name: "project"
-            }}
-          >
-            <MenuItem value="">None</MenuItem>
-            {projects.map(({ name, id }: ProjectModel) => (
-              <MenuItem key={id} value={id}>
-                {name}
-              </MenuItem>
-            ))}
-          </Select>
-          <Select
-            fullWidth
-            value={urgency}
-            onChange={this.onTextFieldChange}
-            inputProps={{
-              name: "urgency"
-            }}
-          >
-            {urgencyOptions.map(({ label, value }: UrgencyOptionModel) => (
-              <MenuItem key={value} value={value}>
-                {label}
-              </MenuItem>
-            ))}
-          </Select>
+          <DialogTitle>Create New Task</DialogTitle>
+          <DialogContent>
+            <TextField
+              fullWidth
+              value={title}
+              label="Title"
+              name="title"
+              onChange={this.onTextFieldChange}
+            />
+            <TextField
+              fullWidth
+              multiline
+              label="Text"
+              value={body}
+              name="body"
+              onChange={this.onTextFieldChange}
+            />
+            <Select
+              fullWidth
+              value={project}
+              onChange={this.onTextFieldChange}
+              inputProps={{
+                name: "project"
+              }}
+            >
+              <MenuItem value="">None</MenuItem>
+              {projects.map(({ name, id }: ProjectModel) => (
+                <MenuItem key={id} value={id}>
+                  {name}
+                </MenuItem>
+              ))}
+            </Select>
+            <Select
+              fullWidth
+              value={urgency}
+              onChange={this.onTextFieldChange}
+              inputProps={{
+                name: "urgency"
+              }}
+            >
+              {urgencyOptions.map(({ label, value }: UrgencyOptionModel) => (
+                <MenuItem key={value} value={value}>
+                  {label}
+                </MenuItem>
+              ))}
+            </Select>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={onClose} color="primary">
+              Cancel
+            </Button>
+            <Button onClick={this.handleSubmit} color="primary" type="submit">
+              Submit
+            </Button>
+          </DialogActions>
         </form>
       </Dialog>
     );

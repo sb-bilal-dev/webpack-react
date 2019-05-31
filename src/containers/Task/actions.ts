@@ -29,6 +29,21 @@ export const getTasks = () => async (dispatch: any) => {
   }
 };
 
+export const addTask = (newTask: TaskModel) => async (dispatch: any) => {
+  // try {
+  //   const response = (await getStorageObj("tasks")) || [];
+  //   dispatch({
+  //     type: TASK_GET_TASKS_SUCCESS,
+  //     tasks: response
+  //   });
+  // } catch (error) {
+  //   dispatch({
+  //     type: TASK_GET_TASKS_ERROR,
+  //     error
+  //   });
+  // }
+};
+
 export const getProjects = () => async (dispatch: any) => {
   dispatch({
     type: TASK_GET_PROJECTS_REQUEST

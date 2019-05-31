@@ -5,12 +5,21 @@ import * as taskActions from "./actions";
 import { TaskModel, ProjectModel } from "./reducer";
 import NewTaskDialog from "../../components/NewTaskDialog";
 import { RootState } from "../../store/rootReducer";
-import { tasksSlc, projectsSlc } from "./selectors";
+import {
+  tasksSlc,
+  projectsSlc,
+  isLoadingTasksSlc,
+  tasksErrorSlc
+} from "./selectors";
+import StdTable from "../../components/StdTable";
+import { ErrorModel } from "../../components/RenderError";
 
 type TaskProps = {
   dispatch: any;
   tasks: TaskModel[];
   projects: ProjectModel[];
+  isLoadingTasks: boolean;
+  tasksError: null | ErrorModel;
 };
 
 type TaskState = {
@@ -26,13 +35,17 @@ class Task extends React.Component<TaskProps, TaskState> {
     this.setState({ isNewTaskDialogOpen: false });
   };
 
+  addTask = (newTask: TaskModel) => {
+    this.props.dispatch(taskActions.addTask(newTask));
+  };
+
   componentDidMount() {
     this.props.dispatch(taskActions.getProjects());
   }
 
   render() {
     const { isNewTaskDialogOpen } = this.state;
-    const { projects } = this.props;
+    const { projects, tasks, isLoadingTasks, tasksError } = this.props;
 
     return (
       <div>
@@ -40,7 +53,9 @@ class Task extends React.Component<TaskProps, TaskState> {
           open={isNewTaskDialogOpen}
           onClose={this.onDialogClose}
           projects={projects}
+          addTask={this.addTask}
         />
+        <StdTable tasks={tasks} isLoading={isLoadingTasks} error={tasksError} />
       </div>
     );
   }
@@ -48,5 +63,7 @@ class Task extends React.Component<TaskProps, TaskState> {
 
 export default connect((state: RootState) => ({
   tasks: tasksSlc(state),
-  projects: projectsSlc(state)
+  projects: projectsSlc(state),
+  isLoadingTasks: isLoadingTasksSlc(state),
+  tasksError: tasksErrorSlc(state)
 }))(Task);

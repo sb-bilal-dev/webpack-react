@@ -12,3 +12,13 @@ export const tasksSlc = createSelector(
   selectTask,
   task => task.tasks
 );
+
+export const isLoadingTasksSlc = createSelector(
+  selectTask,
+  task => task.isLoadingTasks
+);
+
+export const tasksErrorSlc = createSelector(
+  selectTask,
+  task => task.tasksError
+);
