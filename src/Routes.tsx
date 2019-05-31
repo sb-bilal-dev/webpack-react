@@ -1,13 +1,13 @@
 import * as React from "react";
 import { Switch, Route } from "react-router-dom";
 
-import Todo from "./containers/Todo";
+import Task from "./containers/Task";
 import NotFound from "./components/NotFound";
 
 const Routes = () => {
   return (
     <Switch>
-      <Route exact path="/" component={Todo} />
+      <Route exact path="/" component={Task} />
       <Route component={NotFound} />
     </Switch>
   );
