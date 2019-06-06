@@ -22,3 +22,28 @@ export const tasksErrorSlc = createSelector(
   selectTask,
   task => task.tasksError
 );
+
+export const isAddTaskLoadingSlc = createSelector(
+  selectTask,
+  task => task.isAddTaskLoading
+);
+
+export const filterFieldProjectSlc = createSelector(
+  selectTask,
+  task => task.filterFieldProject
+);
+
+export const filteredTasksSlc = createSelector(
+  tasksSlc,
+  filterFieldProjectSlc,
+  (tasks, filterFieldProject) => {
+    let filteredTasks = tasks.filter(task => {
+      if (filterFieldProject.length && task.project !== filterFieldProject)
+        return false;
+
+      return true;
+    });
+
+    return filteredTasks;
+  }
+);
